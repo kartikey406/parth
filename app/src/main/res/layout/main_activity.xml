@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity" >
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:textStyle="bold"
+        android:text="Tap button and speak to command me !" ></TextView>
+
+    <ImageButton
+        android:id="@+id/getaudio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:layout_marginTop="37dp"
+        android:src="@android:drawable/ic_btn_speak_now" ></ImageButton>
+    <TextView
+        android:id="@+id/commandsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/getaudio"
+        android:text=""
+        android:layout_marginLeft="20dp"
+        android:maxLines = "100"
+        android:layout_marginTop="30dp"
+        android:scrollbars = "vertical"
+        />
+
+</RelativeLayout>
