@@ -21,9 +21,7 @@ import com.kalia.bhaskar.parth.robo.Robo;
 public class MainActivity extends Activity implements OnClickListener {
 
     private final int REQUEST_OK = 1;
-
-    // this is soul of robot
-    private Robo robo ;
+    private Robo robo ; //robo remote
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

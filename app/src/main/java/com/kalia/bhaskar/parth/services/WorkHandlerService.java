@@ -22,38 +22,22 @@ public class WorkHandlerService implements WorkHandlerServiceInterface {
     public WorkHandlerService(){
         speakerService = new SpeakerService();
         keywordToTextMap = new Mappings().getKeywordToTextMap();
-        //generateMap();
     }
 
-    /*private void generateMap(){
-        *//*
-        * in future generate this map from file
-        * map : {keyword:text to speak}
-        * *//*
-
-        keywordToTextMap = new HashMap<String, String>();
-        keywordToTextMap.put("hello","hello beautiful");
-        keywordToTextMap.put("what is your name","my name is robo Arjun");
-        keywordToTextMap.put("who is your owner","my owner is  bhaskar kalia");
-    }*/
-
-    /*
-    * here comes the methods for doing work
-    * */
+    /* methods for doing work */
     private void sleep(Context context){
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
+    /* //methods for doing work */
 
 
 
     @Override
     public void work(InterpretedAction ia, Context context, TextToSpeech textToSpeech) {
-        /*
-        * use cases for calling respective methods for work based upon keyword
-        * */
+        //use cases for calling respective methods for work based upon keyword
 
         try{
             if(ia.getType().equals("speak")){

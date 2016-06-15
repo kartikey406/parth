@@ -25,27 +25,7 @@ public class InterpreterService implements InterpreterServiceInterface{
 
     public InterpreterService(){
         keyToTypeMap = new Mappings().getKeyToTypeMap();
-        //generateMap();
     }
-
-    /*
-    * TODO: <bhaskar.kalia>
-    * In future generate this map from a file saved in directory so that robo
-    * enables adding new keywords via app directly ()
-    * */
-    /*private void generateMap(){
-
-        keyToTypeMap = new HashMap<String,String>();
-        *//*
-        * put all keywords mapped to their type {keyword:type}
-        * *//*
-
-        keyToTypeMap.put("what is your name","speak");
-        keyToTypeMap.put("who is your owner","speak");
-        keyToTypeMap.put("hello","speak");
-        keyToTypeMap.put("sleep","work");
-
-    }*/
 
     @Override
     public InterpretedAction interpret(String keyword, Context context){
