@@ -49,7 +49,7 @@ public class Robo implements RoboInterface {
         if(ia != null){
             responderService.respond(ia,context,textToSpeech);
         }else{
-            textToSpeech.speak("I am not programmed for this. please ask my owner to program it in to me.", TextToSpeech.QUEUE_FLUSH, null);
+            textToSpeech.speak("I am not programmed for this command. please ask my master to program it in to me.", TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 

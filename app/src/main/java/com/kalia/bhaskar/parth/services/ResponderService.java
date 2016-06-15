@@ -58,7 +58,7 @@ public class ResponderService implements ResponderServiceInterface{
 
     @Override
     public void respond(InterpretedAction ia,Context context,TextToSpeech textToSpeech){
-        try{
+        //try{
             /*if(ia.getType().equals("speak")){
                 speak(keywordToTextMap.get(ia.getKeyword()),textToSpeech);
             }else{
@@ -67,10 +67,10 @@ public class ResponderService implements ResponderServiceInterface{
 
             workHandlerService.work(ia,context, textToSpeech);
 
-        }catch (Exception e){
-            e.printStackTrace();
-            speakerService.speak("sorry i am not programmed for this command. please ask my owner to program it in to me",textToSpeech);
-        }
+        //}catch (Exception e){
+          //  e.printStackTrace();
+            //speakerService.speak("sorry i am not programmed for this command. please ask my master to program it in to me",textToSpeech);
+        //}
     }
 
 }

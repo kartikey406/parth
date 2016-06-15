@@ -29,11 +29,12 @@ public class Mappings {
         * */
 
         keywordToTextMap = new HashMap<String, String>();
+
         keywordToTextMap.put("hello","hello sir");
-        keywordToTextMap.put("what is your name","my name is robo kaali");
-        keywordToTextMap.put("who is your owner","my owner is  bhaskar kalia");
-        keywordToTextMap.put("do you know gora","yes, gora is a good guy, we call him fandi");
-        keywordToTextMap.put("do you know anoop","yes, kali is a good guy, we call him bhains");
+        keywordToTextMap.put("what is your name","my name is leela.");
+        keywordToTextMap.put("who is your master","my master is  bhaskar kalia.");
+        keywordToTextMap.put("do you know gora","yes, gora is a good guy, we call him fandi. I love to hang out with him.");
+        keywordToTextMap.put("do you know your master","yes, sir bhaskar is a very good person, i always obey him.");
 
         /*
         * Map<String,String>
@@ -41,12 +42,14 @@ public class Mappings {
         * */
 
         keyToTypeMap = new HashMap<String,String>();
-        keyToTypeMap.put("what is your name","speak");
-        keyToTypeMap.put("who is your owner","speak");
+
         keyToTypeMap.put("hello","speak");
-        keyToTypeMap.put("sleep","work");
+        keyToTypeMap.put("what is your name","speak");
+        keyToTypeMap.put("who is your master","speak");
         keyToTypeMap.put("do you know gora","speak");
-        keyToTypeMap.put("do you know anoop","speak");
+        keyToTypeMap.put("do you know your master","speak");
+
+        keyToTypeMap.put("sleep","work");
     }
 
 
