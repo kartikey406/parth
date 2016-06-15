@@ -1,10 +1,9 @@
 package com.kalia.bhaskar.parth.services;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.speech.tts.TextToSpeech;
 
+import com.kalia.bhaskar.parth.interfaces.ResponderServiceInterface;
 import com.kalia.bhaskar.parth.robo.InterpretedAction;
 
 import java.util.HashMap;
@@ -21,38 +20,25 @@ import java.util.Map;
 * based on keyword it can either speak or perform some other action (such as calling someone etc)
 * */
 
-public class ResponderService {
-    private Map<String, String> keywordToTextMap;
-    //TextToSpeech t;
+public class ResponderService implements ResponderServiceInterface{
+    private WorkHandlerService workHandlerService;
+    private SpeakerService speakerService;
 
     public ResponderService(){
-        generateMap();
+        speakerService = new SpeakerService();
+        workHandlerService = new WorkHandlerService();
     }
 
-    public void respond(InterpretedAction ia,Context context,TextToSpeech textToSpeech){
-        try{
-            if(ia.getType().equals("speak")){
-                speak(keywordToTextMap.get(ia.getKeyword()),textToSpeech);
-            }else{
-                work(ia.getKeyword(),context);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-            speak("sorry i am not programmed for this command. please ask my owner to program it in to me",textToSpeech);
-        }
-    }
-
-    private void speak(String text, TextToSpeech textToSpeech){
+    /*private void speak(String text, TextToSpeech textToSpeech){
         textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }*/
 
-    }
-
-    private void work(String keyword, Context context){ //call for other actions like launching another activity
-        /*
+    /*private void work(String keyword, Context context){ //call for other actions like launching another activity
+        *//*
         * parse the keyword for getting 'service' and 'input'
         * eg. 'call bhaskar'
         *       in above keyword (service is calling, input is contact ie. bhaskar)
-        * */
+        * *//*
 
         switch(keyword){
             case "sleep":
@@ -66,20 +52,25 @@ public class ResponderService {
             default:
                 break;
         }
-    }
-
-    private void generateMap(){
+    }*/
 
 
-        /*
-        * in future generate this map from file
-        * map : {keyword:text to speak}
-        * */
 
-        keywordToTextMap = new HashMap<String, String>();
-        keywordToTextMap.put("hello","hello beautiful");
-        keywordToTextMap.put("what is your name","my name is robo Arjun");
-        keywordToTextMap.put("who is your owner","my owner is  bhaskar kalia");
+    @Override
+    public void respond(InterpretedAction ia,Context context,TextToSpeech textToSpeech){
+        try{
+            /*if(ia.getType().equals("speak")){
+                speak(keywordToTextMap.get(ia.getKeyword()),textToSpeech);
+            }else{
+                work(ia.getKeyword(),context);
+            }*/
+
+            workHandlerService.work(ia,context, textToSpeech);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            speakerService.speak("sorry i am not programmed for this command. please ask my owner to program it in to me",textToSpeech);
+        }
     }
 
 }

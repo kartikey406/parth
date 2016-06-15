@@ -1,6 +1,7 @@
 package com.kalia.bhaskar.parth.activities;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kalia.bhaskar.parth.R;
+import com.kalia.bhaskar.parth.robo.Mappings;
 import com.kalia.bhaskar.parth.robo.Robo;
 
 
@@ -34,16 +36,16 @@ public class MainActivity extends Activity implements OnClickListener {
         findViewById(R.id.getaudio).setOnClickListener(this);
         TextView commandBox = (TextView) findViewById(R.id.commandsText);
 
-        String commands = "Commands:\n\n"+
-                "hello\n" +
-                "what is your name\n" +
-                "who is your owner\n" +
-                "sleep\n" ;
+        String commands = "Commands:\n\n";
+
+        Map<String,String> map = new Mappings().getKeyToTypeMap();
+
+        for(Map.Entry<String, String> entry : map.entrySet()){
+            commands += entry.getKey() + "\n";
+        }
 
         commandBox.setMovementMethod(new ScrollingMovementMethod());
         commandBox.setText(commands);
-
-
     }
 
 

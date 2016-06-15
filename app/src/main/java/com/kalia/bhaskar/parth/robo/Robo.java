@@ -3,6 +3,8 @@ package com.kalia.bhaskar.parth.robo;
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
 
+import com.kalia.bhaskar.parth.interfaces.InterpreterServiceInterface;
+import com.kalia.bhaskar.parth.interfaces.ResponderServiceInterface;
 import com.kalia.bhaskar.parth.interfaces.RoboInterface;
 import com.kalia.bhaskar.parth.services.*;
 
@@ -20,8 +22,8 @@ public class Robo implements RoboInterface {
     * has an interpreter
     * */
 
-    private InterpreterService interpreterService;
-    private ResponderService responderService;
+    private InterpreterServiceInterface interpreterService;
+    private ResponderServiceInterface responderService;
     private TextToSpeech textToSpeech;
 
 
@@ -44,7 +46,11 @@ public class Robo implements RoboInterface {
 
     @Override
     public void respond(InterpretedAction ia, Context context) {
-        responderService.respond(ia,context,textToSpeech);
+        if(ia != null){
+            responderService.respond(ia,context,textToSpeech);
+        }else{
+            textToSpeech.speak("I am not programmed for this. please ask my owner to program it in to me.", TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 
     @Override

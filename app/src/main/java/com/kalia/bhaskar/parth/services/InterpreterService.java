@@ -3,7 +3,9 @@ package com.kalia.bhaskar.parth.services;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.kalia.bhaskar.parth.interfaces.InterpreterServiceInterface;
 import com.kalia.bhaskar.parth.robo.InterpretedAction;
+import com.kalia.bhaskar.parth.robo.Mappings;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,26 +20,12 @@ import java.util.Map;
 * keyword mapping or not
 * */
 
-public class InterpreterService {
+public class InterpreterService implements InterpreterServiceInterface{
     private Map<String,String> keyToTypeMap ;
 
-    public InterpreterService(){ //on instantiation create map
-        generateMap();
-    }
-
-    public InterpretedAction interpret(String keyword, Context context){
-        InterpretedAction ia = null;
-        /*
-        * write code for identifying type of keyword (work or speak) based upon a map
-        * */
-        if(keyToTypeMap.get(keyword) !=null){
-            ia = new InterpretedAction(keyword,keyToTypeMap.get(keyword));
-
-        }else {
-            //Toast.makeText(context,"Either you miss spoke or I am dumb ! Try again.",Toast.LENGTH_LONG).show();
-            return  null;
-        }
-        return  ia;
+    public InterpreterService(){
+        keyToTypeMap = new Mappings().getKeyToTypeMap();
+        //generateMap();
     }
 
     /*
@@ -45,18 +33,32 @@ public class InterpreterService {
     * In future generate this map from a file saved in directory so that robo
     * enables adding new keywords via app directly ()
     * */
-    private void generateMap(){
+    /*private void generateMap(){
 
         keyToTypeMap = new HashMap<String,String>();
-        /*
+        *//*
         * put all keywords mapped to their type {keyword:type}
-        * */
+        * *//*
 
         keyToTypeMap.put("what is your name","speak");
         keyToTypeMap.put("who is your owner","speak");
         keyToTypeMap.put("hello","speak");
         keyToTypeMap.put("sleep","work");
 
-    }
+    }*/
 
+    @Override
+    public InterpretedAction interpret(String keyword, Context context){
+        InterpretedAction ia = null;
+        /*
+        * code for identifying type of keyword (work or speak) based upon a map
+        * */
+        if(keyToTypeMap.get(keyword) != null){
+            ia = new InterpretedAction(keyword,keyToTypeMap.get(keyword));
+        }else {
+            System.out.println(keyToTypeMap.get(keyword));
+            return  null;
+        }
+        return  ia;
+    }
 }
