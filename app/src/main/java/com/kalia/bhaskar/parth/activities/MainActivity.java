@@ -1,6 +1,7 @@
 package com.kalia.bhaskar.parth.activities;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
@@ -8,20 +9,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kalia.bhaskar.parth.R;
+import com.kalia.bhaskar.parth.dto.CommandTypeDto;
 import com.kalia.bhaskar.parth.robo.Mappings;
 import com.kalia.bhaskar.parth.robo.Robo;
+import com.kalia.bhaskar.parth.services.DataService;
 
 
 public class MainActivity extends Activity implements OnClickListener {
 
     private final int REQUEST_OK = 1;
     private Robo robo ; //robo remote
+    private DataService dataService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,26 +36,22 @@ public class MainActivity extends Activity implements OnClickListener {
         //create new robo instance
         robo = new Robo(getApplicationContext());
 
+        //create data service
+        dataService = new DataService();
+
         findViewById(R.id.getaudio).setOnClickListener(this);
-        TextView commandBox = (TextView) findViewById(R.id.commandsText);
-
-        String commands = "Commands:\n\n";
-
-        Map<String,String> map = new Mappings().getKeyToTypeMap();
-
-        for(Map.Entry<String, String> entry : map.entrySet()){
-            commands += entry.getKey() + "\n";
-        }
-
-        commandBox.setMovementMethod(new ScrollingMovementMethod());
-        commandBox.setText(commands);
+        findViewById(R.id.teachMeButton).setOnClickListener(this);
     }
 
 
     //click listener for views
     @Override
     public void onClick(View view) {
-        listen();
+        if(view.getId() == R.id.getaudio){
+            listen();
+        }else {
+            teachMe();
+        }
     }
 
     @Override
@@ -75,5 +76,10 @@ public class MainActivity extends Activity implements OnClickListener {
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error initializing Robo's text to speech engine!!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void teachMe(){
+        Intent i = new Intent(getApplicationContext(),TeachMeActivity.class);
+        startActivity(i);
     }
 }

@@ -1,6 +1,7 @@
 package com.kalia.bhaskar.parth.services;
 
 import android.content.Context;
+import android.provider.ContactsContract;
 import android.widget.Toast;
 
 import com.kalia.bhaskar.parth.interfaces.InterpreterServiceInterface;
@@ -21,10 +22,13 @@ import java.util.Map;
 * */
 
 public class InterpreterService implements InterpreterServiceInterface{
-    private Map<String,String> keyToTypeMap ;
+    /*private Map<String,String> keyToTypeMap ;*/
+    private DataService dataService;
 
     public InterpreterService(){
-        keyToTypeMap = new Mappings().getKeyToTypeMap();
+        /*keyToTypeMap = new Mappings().getKeyToTypeMap();*/
+        dataService = new DataService();
+        //remove this
     }
 
     @Override
@@ -33,10 +37,13 @@ public class InterpreterService implements InterpreterServiceInterface{
         /*
         * code for identifying type of keyword (work or speak) based upon a map
         * */
-        if(keyToTypeMap.get(keyword) != null){
-            ia = new InterpretedAction(keyword,keyToTypeMap.get(keyword));
+        if(dataService.getCommandTypeText(keyword,context) != null){
+            ia = new InterpretedAction(keyword,dataService.getCommandTypeText(keyword,context));
+
+            // ia = new InterpretedAction(dataService,getType());
+
         }else {
-            System.out.println(keyToTypeMap.get(keyword));
+            /*System.out.println(dataService.getCommandTypeText(keyword));*/
             return  null;
         }
         return  ia;

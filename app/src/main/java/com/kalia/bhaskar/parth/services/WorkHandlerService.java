@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.speech.tts.TextToSpeech;
 
+import com.kalia.bhaskar.parth.activities.CommandsListActivity;
 import com.kalia.bhaskar.parth.interfaces.WorkHandlerServiceInterface;
 import com.kalia.bhaskar.parth.robo.InterpretedAction;
 import com.kalia.bhaskar.parth.robo.Mappings;
@@ -16,12 +17,16 @@ import java.util.Map;
  */
 public class WorkHandlerService implements WorkHandlerServiceInterface {
 
-    SpeakerService speakerService;
-    private Map<String, String> keywordToTextMap;
+    private SpeakerService speakerService;
+    private DataService dataService;
+    /*private Map<String, String> keywordToTextMap;*/
 
     public WorkHandlerService(){
         speakerService = new SpeakerService();
-        keywordToTextMap = new Mappings().getKeywordToTextMap();
+        dataService = new DataService();
+        /*keywordToTextMap = new Mappings().getKeywordToTextMap();*/
+
+        //remove this
     }
 
     /* methods for doing work */
@@ -30,6 +35,12 @@ public class WorkHandlerService implements WorkHandlerServiceInterface {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    private void showCommands(Context context){
+        Intent i = new Intent(context, CommandsListActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
     }
     /* //methods for doing work */
 
@@ -41,11 +52,16 @@ public class WorkHandlerService implements WorkHandlerServiceInterface {
 
         try{
             if(ia.getType().equals("speak")){
-                speakerService.speak(keywordToTextMap.get(ia.getKeyword()),textToSpeech);
+                /*speakerService.speak(keywordToTextMap.get(ia.getKeyword()),textToSpeech);*/
+                //start here
+                 speakerService.speak(dataService.getActionSpeechText(ia.getKeyword(),context),textToSpeech);
             }else{
                 switch (ia.getKeyword()){
                     case "sleep":
                         sleep(context);
+                        break;
+                    case "show commands":
+                        showCommands(context);
                         break;
                     default:
                         break;

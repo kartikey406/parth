@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".activities.TeachMeActivity" >
+
+    <TextView
+        android:id="@+id/teachKeyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:text="Enter Command (Please use grammar skills)" ></TextView>
+
+    <EditText
+        android:id="@+id/teachKeywordEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"></EditText>\
+
+    <TextView
+        android:id="@+id/teachText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:textStyle="bold"
+        android:text="Enter Answer Text" ></TextView>
+
+    <EditText
+        android:id="@+id/teachTextEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"></EditText>
+    <Button
+        android:id="@+id/teachSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="Save new command"></Button>
+
+    <TextView
+        android:id="@+id/removeKeywordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:text="Enter Command (Please use grammar skills)" ></TextView>
+
+    <EditText
+        android:id="@+id/teachRemoveEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"></EditText>
+
+
+    <Button
+        android:id="@+id/teachRemoveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="Remove Command"></Button>
+
+</LinearLayout>
