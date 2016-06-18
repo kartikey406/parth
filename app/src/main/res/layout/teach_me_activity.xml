@@ -57,7 +57,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="30dp"
         android:textStyle="bold"
-        android:text="Enter Command (Please use grammar skills)" ></TextView>
+        android:text="Enter Command" ></TextView>
 
     <EditText
         android:id="@+id/teachRemoveEdit"

@@ -71,17 +71,26 @@ public class TeachMeActivity extends Activity implements View.OnClickListener {
     }
 
     private  void remove(){
-        if(removecommand.getText().toString().length()>0){
-            if(!removecommand.getText().toString().equals("who built you")){
-                dataService.deleteRowsWithKeyword(removecommand.getText().toString(),TeachMeActivity.this);
-                Toast.makeText(getApplicationContext(),"Command removed successfully",Toast.LENGTH_LONG).show();
+
+        try{
+            if(removecommand.getText().toString().length()>0){
+                if(!(removecommand.getText().toString().equals("who built you") || dataService.getCommandTypeText(removecommand.getText().toString(),TeachMeActivity.this).equals("work"))){
+                    dataService.deleteRowsWithKeyword(removecommand.getText().toString(),TeachMeActivity.this);
+                    Toast.makeText(getApplicationContext(),"Command removed successfully",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"You do not have permissions to remove this command!",Toast.LENGTH_LONG).show();
+                }
+
             }else{
-                Toast.makeText(getApplicationContext(),"You do not have permissions to remove this command!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Unable to remove empty command.",Toast.LENGTH_LONG).show();
             }
 
-        }else{
-            Toast.makeText(getApplicationContext(),"Unable to remove empty command.",Toast.LENGTH_LONG).show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            Toast.makeText(getApplicationContext(),"Unable to locate command in db. Please note commands are even space sensitive.",Toast.LENGTH_LONG).show();
         }
+
 
         removecommand.setText("");
     }
