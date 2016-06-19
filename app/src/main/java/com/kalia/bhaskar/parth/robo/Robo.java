@@ -49,7 +49,7 @@ public class Robo implements RoboInterface {
         if(ia != null){
             responderService.respond(ia,context,textToSpeech);
         }else{
-            textToSpeech.speak("sorry you could not hear you", TextToSpeech.QUEUE_FLUSH, null);
+            textToSpeech.speak("sorry i could not hear you", TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 

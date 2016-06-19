@@ -82,14 +82,14 @@ public class DatabaseManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(createInsertQueryAS("do you know your master", "yes, sir my master is a very good person, i always obey him."));
         sqLiteDatabase.execSQL(createInsertQueryAS("what do you eat", "i eat power."));
         sqLiteDatabase.execSQL(createInsertQueryAS("what is your birthdate", "i was born on tuesday forteenth june two thousand and sixteen midnight"));
-        sqLiteDatabase.execSQL(createInsertQueryAS("what is your national anthem", "Jana gana mana adhinaayaka jaya hay, Bhaaratha Bhaagya Vidhaata ।\\n\" +\n" +
-                "                \"Punjab Sindhu Gujarat Maraatha, Draavida Utkala Banga ।\\n\" +\n" +
-                "                \"Vindhya Himaachala Yamuna Ganga, Ucchala jaladhi taranga ।\\n\" +\n" +
-                "                \"Tava Shubha naame jaage, Tava shubha aashisha maage ।\\n\" +\n" +
-                "                \"Gaahey tava jaya gaathaa ।\\n\" +\n" +
-                "                \"Jana Gana Mangala Daayaka jaya hay, Bhaaratha Bhaagya Vidhaata ।\\n\" +\n" +
-                "                \"Jaya hay, Jaya hay, Jaya hay ।\\n\" +\n" +
-                "                \"Jaya Jaya Jaya Jaya hay ।।"));
+        sqLiteDatabase.execSQL(createInsertQueryAS("what is your national anthem", "Jana gana mana adhinaayaka jaya hay, Bhaaratha Bhaagya Vidhaata ।\n" +
+                "Punjab Sindhu Gujarat Maraatha, Draavida Utkala Banga ।\n" +
+                "Vindhya Himaachala Yamuna Ganga, Ucchala jaladhi taranga ।\n" +
+                "Tava Shubha naame jaage, Tava shubha aashisha maage ।\n" +
+                "Gaahey tava jaya gaathaa ।\n" +
+                "Jana Gana Mangala Daayaka jaya hay, Bhaaratha Bhaagya Vidhaata ।\n" +
+                "Jaya hay, Jaya hay, Jaya hay ।\n" +
+                "Jaya Jaya Jaya Jaya hay ।।"));
         sqLiteDatabase.execSQL(createInsertQueryAS("fuck you", "gaand marwa bhosdy kay"));
         sqLiteDatabase.execSQL(createInsertQueryAS("status", "i can listen, i can speak and i can understand commands. soon i will be able to do things for you."));
         sqLiteDatabase.execSQL(createInsertQueryAS("how are you", "i am fine. thanks for asking."));
