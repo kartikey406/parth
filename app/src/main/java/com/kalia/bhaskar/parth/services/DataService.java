@@ -25,6 +25,7 @@ public class DataService implements DataServiceInterface{
         List<CommandTypeDto> list = dao.getRows(keyword);
 
         if(list.size() > 0){
+            Log.e("command_type_text",""+list.get(0).getType());
             return list.get(0).getType();
         }else{
             Log.d(TAG,"no records in table");
